@@ -77,6 +77,23 @@ Console.WriteLine(KRadiusSubarrayAverages_2090.GetAverages(new int[] { 7, 4, 3, 
 
 #endregion
 
+#region RotateImage_48
+var matrix = new int[3][];
+int count = 1;
+for (int i = 0; i < matrix.Length; i++)
+{
+    matrix[i] = new int[3]; // Create inner array
+    for (int j = 0; j < matrix[i].Length; j++)
+    {
+        matrix[i][j] = count;
+        count++;
+    }
+        
+}
+RotateImage_48.Rotate(matrix);
+
+#endregion
+
 
 
 Console.ReadLine();
