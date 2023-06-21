@@ -61,7 +61,19 @@ using ArrayProblem;
 
 #region SortArrayByParity_905
 
-Console.WriteLine(SortArrayByParity_905.SortArrayByParity(new int[] { 3,1,2,4 }));
+//Console.WriteLine(SortArrayByParity_905.SortArrayByParity(new int[] { 3,1,2,4 }));
+
+#endregion
+
+#region SortArrayByParity_905
+
+//SortColors_75.SortColors(new int[] { 2, 0, 2, 1, 1, 0 });
+
+#endregion
+
+#region KRadiusSubarrayAverages_2090
+
+Console.WriteLine(KRadiusSubarrayAverages_2090.GetAverages(new int[] { 7, 4, 3, 9, 1, 8, 5, 2, 6 }, 3));
 
 #endregion
 
