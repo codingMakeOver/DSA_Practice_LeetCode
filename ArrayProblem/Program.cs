@@ -73,7 +73,7 @@ using ArrayProblem;
 
 #region KRadiusSubarrayAverages_2090
 
-Console.WriteLine(KRadiusSubarrayAverages_2090.GetAverages(new int[] { 7, 4, 3, 9, 1, 8, 5, 2, 6 }, 3));
+//Console.WriteLine(KRadiusSubarrayAverages_2090.GetAverages(new int[] { 7, 4, 3, 9, 1, 8, 5, 2, 6 }, 3));
 
 #endregion
 
@@ -90,10 +90,40 @@ for (int i = 0; i < matrix.Length; i++)
     }
         
 }
-RotateImage_48.Rotate(matrix);
+//RotateImage_48.Rotate(matrix);
 
 #endregion
 
+#region _3SumClosest_16
 
+//Console.WriteLine(_3SumClosest_16.ThreeSumClosest(new int[] { -1, 2, 1, -4 }, 1));
+
+#endregion
+
+#region WordSearch_79
+char[] wordarray = new char[] { 'A', 'B', 'C', 'E', 'S', 'F', 'C', 'S', 'A', 'D', 'E', 'E' };
+var wordMatrix = new char[3][];
+count = 0;
+for (int i = 0; i < wordMatrix.Length; i++)
+{
+    wordMatrix[i] = new char[4]; // Create inner array
+    for (int j = 0; j < wordMatrix[i].Length; j++)
+    {
+        wordMatrix[i][j] = wordarray[count];
+        count++;
+    }
+
+}
+
+
+//Console.WriteLine(WordSearch_79.Exist(wordMatrix, "ABCCED"));
+
+#endregion
+
+#region BestTimeToBuyAndSellStockWithTransactionFee_714
+
+Console.WriteLine(BestTimeToBuyAndSellStockWithTransactionFee_714.MaxProfit(new int[] { 1, 3, 2, 8, 4, 9 },3));
+
+#endregion
 
 Console.ReadLine();
