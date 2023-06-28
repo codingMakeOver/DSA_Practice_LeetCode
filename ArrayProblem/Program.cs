@@ -122,7 +122,37 @@ for (int i = 0; i < wordMatrix.Length; i++)
 
 #region BestTimeToBuyAndSellStockWithTransactionFee_714
 
-Console.WriteLine(BestTimeToBuyAndSellStockWithTransactionFee_714.MaxProfit(new int[] { 1, 3, 2, 8, 4, 9 },3));
+//Console.WriteLine(BestTimeToBuyAndSellStockWithTransactionFee_714.MaxProfit(new int[] { 1, 3, 2, 8, 4, 9 },3));
+
+#endregion
+
+#region HouseRobber_198
+
+//Console.WriteLine(HouseRobber_198.Rob(new int[] { 1, 2, 3, 1 }));
+
+#endregion
+
+#region RemoveDuplicatesFromSortedArrayII_80
+
+//Console.WriteLine(RemoveDuplicatesFromSortedArrayII_80.RemoveDuplicates(new int[] { 1, 1, 1, 2, 2, 3 }));
+
+#endregion
+
+#region BestTimeToBuyAndSellStockII_122
+
+//Console.WriteLine(BestTimeToBuyAndSellStockII_122.MaxProfit(new int[] { 1, 2, 3, 4, 5 }));
+
+#endregion
+
+#region RemoveDuplicatesFromSortedArray_26
+
+//Console.WriteLine(RemoveDuplicatesFromSortedArray_26.RemoveDuplicates(new int[] { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 }));
+
+#endregion
+
+#region RotateArray_189
+
+RotateArray_189.Rotate(new int[] { 1, 2, 3, 4, 5, 6, 7 }, 3);
 
 #endregion
 
