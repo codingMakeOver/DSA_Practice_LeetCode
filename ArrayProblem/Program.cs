@@ -1,6 +1,9 @@
 ﻿#region FindDuplicateNumeber_287
 
 using ArrayProblem;
+using Microsoft.VisualBasic;
+using System.Collections.Generic;
+using System.Text;
 
 //int[] nums = new int[] { 3, 1, 3, 4, 2 };
 //var result = FindDuplicateNumeber_287.FindDuplicate(nums);
@@ -88,7 +91,7 @@ for (int i = 0; i < matrix.Length; i++)
         matrix[i][j] = count;
         count++;
     }
-        
+
 }
 //RotateImage_48.Rotate(matrix);
 
@@ -152,8 +155,186 @@ for (int i = 0; i < wordMatrix.Length; i++)
 
 #region RotateArray_189
 
-RotateArray_189.Rotate(new int[] { 1, 2, 3, 4, 5, 6, 7 }, 3);
+//RotateArray_189.Rotate(new int[] { 1, 2, 3, 4, 5, 6, 7 }, 3);
+
+#endregion
+
+#region HIndex_274
+
+//Console.WriteLine(HIndex_274.HIndex(new int[] { 3,1,2,3,2 }));
+
+#endregion
+
+#region ProductOfArrayExceptSelf_238
+
+//Console.WriteLine(ProductOfArrayExceptSelf_238.ProductExceptSelf(new int[] { 1, 2, 3, 4 }));
+
+#endregion
+
+#region ReverseWordsInAString_151
+
+//Console.WriteLine(ReverseWordsInAString_151.ReverseWords("the sky is blue"));
+
+#endregion
+
+#region LengthOfLastWord_58
+
+//Console.WriteLine(LengthOfLastWord_58.LengthOfLastWord("the sky is blue"));
+
+#endregion
+
+#region FindTheIndexOfTheFirstOccurrenceInAString_28
+
+//Console.WriteLine(FindTheIndexOfTheFirstOccurrenceInAString_28.StrStr("sadbutsad", "sad"));
+
+#endregion
+
+#region BuddyStrings_859
+
+//Console.WriteLine(BuddyStrings_859.BuddyStrings.("aabcd", "aadcb"));
+
+#endregion
+
+#region SearchInRotatedSortedArray_33
+
+//Console.WriteLine(SearchInRotatedSortedArray_33.Search(new int[] {3,1}, 1));
+
+#endregion
+
+
+#region MinimizedMaximumOfProductsDistributedToAnyStore_2064
+
+//Console.WriteLine(MinimizedMaximumOfProductsDistributedToAnyStore_2064.MinimizedMaximum(6, new int[] { 11, 6 }));
+
+#endregion
+
+#region AddBinary_67
+// not clear
+//Console.WriteLine(AddBinary_67.AddBinary("1010", "1011"));
+
+#endregion
+
+#region FindFirstAndLastPositionOfElementInSortedArray_34
+
+//var test = FindFirstAndLastPositionOfElementInSortedArray_34.SearchRange(new int[] { 1, 4 }, 4);
+//foreach (var item in test)
+//{
+//    Console.Write(item + ", ");
+//}
+
+#endregion
+
+#region SearchnRotatedSortedArrayII_81
+
+//Console.WriteLine(SearchnRotatedSortedArrayII_81.Search(new int[] { 1, 0, 1, 1, 1 }, 0));
+
+#endregion
+
+#region MinimumNumberOfDaysToMakemBouquets_1482
+
+Console.WriteLine(MinimumNumberOfDaysToMakemBouquets_1482.MinDays(new int[] { 7, 7, 7, 7, 12, 7, 7 }, 2,3));
 
 #endregion
 
 Console.ReadLine();
+
+
+public class AddBinary_67
+{
+    public static string AddBinary(string a, string b)
+    {
+        int carry = 0;
+        string result = "";
+        // adding zeros to the shortest number's left for iteration 
+        if (a.Length < b.Length)
+            a = a.PadLeft(b.Length, '0');
+        else
+            b = b.PadLeft(a.Length, '0');
+
+        for (int i = a.Length - 1; i >= 0; i--)
+        {
+            var tempA = char.GetNumericValue(a[i]);
+            var tempB = char.GetNumericValue(b[i]);
+            // now get mod 2 for getting the binary sum
+            result = ((carry + tempA + tempB) % 2) + result;
+            //you need to calculate the carry for next iteration with 
+            //total sum is bigger or equal then 2 if its correct assign to 1
+            carry = (carry + tempA + tempB) >= 2 ? 1 : 0;
+        }
+        //if carry has 1 then return result with carry, else just return result.
+        return carry != 0 ? carry + result : result;
+    }
+}
+
+
+public class MinimumNumberOfDaysToMakemBouquets_1482
+{
+    public static int MinDays(int[] bloomDay, int m, int k)
+    {
+        // in this problem we will going to use binary search
+        // first we need to decide the range based on the days the flower need to bloom
+        // take the max and min 
+        // [1,10,3,10,2], bouquet m = 3, number of flowers in the bouquet k = 1
+        // range will be 1 to 10 , so basically in this range we have all bloomed flower and possibally we can make the required number of bouquet
+        // then we will take the mid and check if the mid can give us possible answer or not
+        // if not then we will increase / decrease the range 
+
+        // check if we dont have enough flowers in the garden to make the bouquet
+        if (m * k > bloomDay.Length)
+            return -1;
+        int result = -1;
+        int high = bloomDay.Max(), low = bloomDay.Min();
+        while (low <= high)
+        {
+            int mid = (high + low) / 2;
+            
+            if (IsPossible(bloomDay, m, k, mid))
+            {
+                result = mid;
+                high = mid - 1;
+            }
+            else
+            {
+                low = mid + 1;
+            }
+                
+        }
+
+        return result;
+    }
+
+    private static bool IsPossible(int[] flowerBloomDays, int bouquet, int flowersInEachBouquet, int range)
+    {
+        // adding two variable for tracking if we are able to make required bouquet(bc)
+        // and if both the flowers are adjusent and bloomed
+        int adjuset = 0;
+        int bc = 0; // bouquetCount
+        for (int i = 0; i < flowerBloomDays.Length; i++)
+        {
+            // if i th element is lesser then the day then the flower will bloom
+            if (flowerBloomDays[i] <= range)
+            {
+                // this means we can now have one flower 
+                adjuset++;
+
+                // now ckeck if we have required number of adjusant flower
+                if(adjuset == flowersInEachBouquet)
+                {
+                    bc++;
+                    if (bc == bouquet)
+                        return true;
+                    else
+                        // as i have created the boquet so we need to now reset
+                        adjuset = 0;
+                }
+            }
+            else
+            {
+                // now if the bouquet count is not equal to the required number of flower then will make the adjust to 0 
+                // because we have break the continuity, ( adjusent means the flower should be contiguous)
+                adjuset = 0;
+            }
+        }
+        return false;
+    }
+}

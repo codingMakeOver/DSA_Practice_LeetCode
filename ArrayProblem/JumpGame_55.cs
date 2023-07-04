@@ -23,6 +23,7 @@ public class JumpGame_55
             // check if we can move to last index
             if (i + nums[i] >= lastPosition) lastPosition = i;
         }
+        // if last position is 0 that means we reached from last index to first index
         return lastPosition == 0;
     }
 }
